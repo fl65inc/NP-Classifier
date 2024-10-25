@@ -1,27 +1,26 @@
 name: production-integration
 
-on: 
+on:
   push:
   schedule:
-   - cron:  '15 * * * *'
+    - cron: "15 * * * *"
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, actions-runner-dev]
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Set up Python 3.7
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.7
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install requests
-        pip install pandas
-    - name: Test with pytest
-      run: |
-        pip install nose2
-        cd test-integration	&& nose2 -v
+      - uses: actions/checkout@v1
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+          pip install pandas
+      - name: Test with pytest
+        run: |
+          pip install nose2
+          cd test-integration	&& nose2 -v
