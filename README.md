@@ -10,8 +10,6 @@ you need docker and docker-compose.
 **Note:** The instructions remain mostly the same (with some conda stuff), we have re-written them for clarity. Read the original instructions [here](#original-instructions)
 
 - The fork has a new branch `dev` with a small amount of modifications. Please checkout to the `dev` branch or clone the dev branch to use the fork
-- Run `conda create -n np-classifier python=3.8` to create a new conda environment
-- Install the latest `tensorflow` and `pandas` using `conda install tensorflow pandas`. Do not worry as the latest tensorflow is backward compatible with the models
 - `Dockerfile` was modified to use `rdkit` the latest version, and a few more `g++` dependencies for `rdkit` were added
 - `Classifier/models_folder/models/convert_keras_to_tf.py` was modified to disable `tf.keras.backend.set_learning_phase(0)`
 - `Makefile` was modified to use `linux/amd64` platform for building, and running docker images
@@ -19,8 +17,10 @@ you need docker and docker-compose.
 
 ### TLDR Instructions
 
+- Run `conda create -n np-classifier python=3.8` to create a new conda environment. Activate the environment using `conda activate np-classifier`
+- Install the latest `tensorflow` and `pandas` using `conda install tensorflow pandas`. Do not worry as the latest tensorflow is backward compatible with the models
 - In Docker Desktop for Mac, Add the path `/Users/<>/NP-Classifier/output` to `Docker -> Preferences... -> Resources -> File Sharing.` Replace `<>/` with your username/path to the `NP-Classifier` folder
-- Run `cd Classifier/models_folder/models` and `sh ./get_models.sh` to download the models
+- Run `cd Classifier/models_folder/models` and `sh ./get_models.sh` to download the models (be sure to be in the `np-classifier` conda environment when running this)
 - This will download the models to `Classifier/models_folder/models/models` and convert them to `HDF5` format
 - Run `docker network create nginx-net` to create a network
 - Run `make server-compose` to build and run the server
