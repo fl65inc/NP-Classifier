@@ -7,9 +7,11 @@ you need docker and docker-compose.
 
 ## Montai Fork Changes
 
-**Note:** The instructions remain mostly the same, we have re-written them for clarity. Read the original instructions [here](#original-instructions)
+**Note:** The instructions remain mostly the same (with some conda stuff), we have re-written them for clarity. Read the original instructions [here](#original-instructions)
 
 - The fork has a new branch `dev` with a small amount of modifications. Please checkout to the `dev` branch or clone the dev branch to use the fork
+- Run `conda create -n np-classifier python=3.8` to create a new conda environment
+- Install the latest `tensorflow` and `pandas` using `conda install tensorflow pandas`. Do not worry as the latest tensorflow is backward compatible with the models
 - `Dockerfile` was modified to use `rdkit` the latest version, and a few more `g++` dependencies for `rdkit` were added
 - `Classifier/models_folder/models/convert_keras_to_tf.py` was modified to disable `tf.keras.backend.set_learning_phase(0)`
 - `Makefile` was modified to use `linux/amd64` platform for building, and running docker images
