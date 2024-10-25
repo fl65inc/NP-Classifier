@@ -13,6 +13,7 @@ you need docker and docker-compose.
 - `Dockerfile` was modified to use `rdkit` the latest version, and a few more `g++` dependencies for `rdkit` were added
 - `Classifier/models_folder/models/convert_keras_to_tf.py` was modified to disable `tf.keras.backend.set_learning_phase(0)`
 - `Makefile` was modified to use `linux/amd64` platform for building, and running docker images
+- `.github/workflows/**` was modified to use our CI on k8s
 
 ### TLDR Instructions
 
